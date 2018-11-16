@@ -1,0 +1,17 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "che re dian backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Jenny",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
