@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    ddd
+   From Back: {{data.msg}}
   </div>
 </template>
 
@@ -8,16 +8,16 @@
 export default {
   name: 'Deposit',
   data () {
-    return {}
+    return {
+      data: {}
+    }
   },
   created () {
-    this.$axios.post('/confirm/lifeCycle')
+    this.$axios.get('/say')
       .then((res) => {
-        if (res.code === 200) {
-          console.log('xxx')
-        }
+        this.data = res.data
       })
-      .catch((err) => {
+      .catch(() => {
       })
   }
 }
