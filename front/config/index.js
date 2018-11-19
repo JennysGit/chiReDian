@@ -3,13 +3,15 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
-const proxy_service = "http://192.168.1.100:8080";
+// const proxy_service = "http://192.168.1.100:8080";
+const proxy_service = "http://localhost:3001";
 module.exports = {
   dev: {
 
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
+    disableHostCheck: true,
     proxyTable: {
       '/': {
         target: proxy_service, //target为后台请求地址
@@ -18,7 +20,7 @@ module.exports = {
     },
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
+    host: process.env.HOST, // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,

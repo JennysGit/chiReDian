@@ -13,7 +13,7 @@ export default {
     }
   },
   created () {
-    this.$axios.get('/say')
+    this.$axios.get('/wx/configData')
       .then((res) => {
         this.data = res.data
       })

@@ -4,7 +4,8 @@
   "description": "che re dian backend",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "start": "node index.js"
   },
   "keywords": [
     "node"
@@ -12,6 +13,11 @@
   "author": "Jenny",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "compression": "^1.7.3",
+    "express": "^4.16.4",
+    "js-base64": "^2.4.9",
+    "jssha": "^2.3.1",
+    "opn": "^5.4.0",
+    "request": "^2.88.0"
   }
 }

@@ -1,21 +1,29 @@
-const fs = require('fs');
-const path = require('path');
-const bodyParser = require('body-parser');
-const express = require('express');
+var express = require('express');
+var app = express();
+var http = require('http');
+var wxConfigData = require('./wx/wx');
+var port = '3001';
 
-const api = require('./api');
-const app = express();
+var conpression = require('compression');
+app.use(conpression());
 
-app.use(bodyParser.join());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static('./dist'));
+app.set('port', port);
 
-app.use(api);
+var server = http.createServer(app);
+server.listen(port);
 
-app.use(express.static(path.resolve(__dirname, './static')));
-
-app.get('*', (res, res) =>{
-	const html = fs.readFileSync(path.resolve(__dirname, './static/index.html'),  'utf-8');
-	res.send(html);
+app.get('/wx/configData', (req, res)=>{
+	let href = req.query.href;
+	wxConfigData(href)
+	.then((data)=>{
+		res.send(JSON.stringify(data));
+	})
 });
 
-app.listen(8088);
+server.on("listening", onListening);
+
+function onListening() {
+  console.log(`server port ${port} listening and open browser with http://localhost:${port}....`);
+  //opn(`http://localhost:${port}`,"chrome");
+}
